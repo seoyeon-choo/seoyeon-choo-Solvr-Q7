@@ -13,7 +13,8 @@
     "test:server": "pnpm --filter server test",
     "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
     "gather": "ts-node scripts/gather.ts",
-    "task1": "npm run gather && git add release-stats.csv && git commit -m \"Task1: Mission Complete!\""  
+    "task1": "npm run gather && git add release-stats.csv && git commit -m \"Task1: Mission Complete!\"",
+      "task2": "npm run gather && git add release-stats.csv && git commit -m \"Task2: Mission Complete!\""
 },
   "keywords": [
     "fullstack",

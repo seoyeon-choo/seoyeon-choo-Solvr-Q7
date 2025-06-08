@@ -29,6 +29,11 @@ const data: Release[] = rawData;
   return releases;
 }
 
+function isWeekend(date: Date): boolean {
+  const day = date.getDay();
+  return day === 0 || day === 6;
+}
+
 function aggregate(dates: string[]): { daily: Stats; weekly: Stats; yearly: Stats } {
   const daily: Stats = {};
   const weekly: Stats = {};
@@ -36,6 +41,10 @@ function aggregate(dates: string[]): { daily: Stats; weekly: Stats; yearly: Stat
 
   for (const d of dates) {
     const dt = parseISO(d);
+    if (isWeekend(dt)) {
+      continue;
+    }
+
     const dayKey = formatISO(startOfDay(dt), { representation: 'date' });
     const weekKey = formatISO(startOfWeek(dt, { weekStartsOn: 1 }), { representation: 'date' });
     const yearKey = String(getYear(dt));
@@ -47,6 +56,8 @@ function aggregate(dates: string[]): { daily: Stats; weekly: Stats; yearly: Stat
 
   return { daily, weekly, yearly };
 }
+
+
 
 function toCSV(stat: Stats, label: string): string {
   const lines = [`${label},count`];
