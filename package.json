@@ -11,8 +11,10 @@
     "test": "pnpm test:client && pnpm test:server",
     "test:client": "pnpm --filter client test",
     "test:server": "pnpm --filter server test",
-    "format": "prettier --write \"**/*.{ts,tsx,json,md}\""
-  },
+    "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
+    "gather": "ts-node scripts/gather.ts",
+    "task1": "npm run gather && git add release-stats.csv && git commit -m \"Task1: Mission Complete!\""  
+},
   "keywords": [
     "fullstack",
     "react",
@@ -27,5 +29,12 @@
   },
   "engines": {
     "node": ">=22.0.0"
+  },
+  "dependencies": {
+    "@types/node": "^22.15.30",
+    "date-fns": "^4.1.0",
+    "node-fetch": "^3.3.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }
